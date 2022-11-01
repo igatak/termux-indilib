@@ -88,7 +88,7 @@ index 3a3a4295..78cd88d5 100644
 +option(WITH_ASTROLINK4 "Install AstroLink4 Driver" Off)
 +option(WITH_AHP_XC "Install AHP XC Correlators Driver" Off)
 +endif(ANDROID)
-
++
  # FFMPEG required for INDI Webcam driver
  find_package(FFmpeg)
 diff --git a/cmake_modules/CMakeCommon.cmake b/cmake_modules/CMakeCommon.cmake
