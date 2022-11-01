@@ -55,7 +55,7 @@ function err {
 
 function configure_and_build {
   cd $1
-  echo $PWD 
+  echo $PWD
   if [ "$2" = "autogen" ]; then
     msg "Running autogen.sh"
     ./autogen.sh
@@ -82,7 +82,7 @@ function configure_and_build {
 }
 
 function install_dep {
-  pkg up -y && pkg in -y git \
+  pkg update -y && pkg install -y git \
 	wget cmake make \
 	autoconf automake \
 	libtool binutils tar \
@@ -168,7 +168,7 @@ if [ -d "$INDILIB_DIR" ]; then
 else
   msg "Cloning $INDILIB_DIR"
   git clone --depth=1 $INDILIB_URL $INDILIB_DIR
-  cd $INDILIB_DIR 
+  cd $INDILIB_DIR
   git apply ../indi.patch
   cd ..
 fi
