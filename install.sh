@@ -31,8 +31,9 @@ LIBGPHOTO_DIR="libgphoto"
 LIBFTDI_URL="https://github.com/wjakob/libftdi.git"
 LIBFTDI_DIR="libftdi"
 
-INDILIB_URL="https://github.com/indilib/indi.git"
+INDILIB_URL="https://github.com/igatak/indi.git"
 INDILIB_DIR="indi"
+INDILIB_BRANCH="feature/build_for_android"
 
 INDILIB_3P_URL="https://github.com/indilib/indi-3rdparty.git"
 INDILIB_3P_DIR="indi-3rdparty"
@@ -89,7 +90,7 @@ function install_dep {
 	libjpeg-turbo gsl \
 	libusb fftw pkg-config \
 	libandroid-wordexp \
-	libconfuse
+	libconfuse libev
 }
 
 msg "Installing build essentials and INDILib dependencies"
@@ -167,9 +168,9 @@ if [ -d "$INDILIB_DIR" ]; then
   msg "$INDILIB_DIR already exist skipping clone"
 else
   msg "Cloning $INDILIB_DIR"
-  git clone --depth=1 $INDILIB_URL $INDILIB_DIR
+  git clone --depth=1 --no-single-branch $INDILIB_URL $INDILIB_DIR
   cd $INDILIB_DIR
-  git apply ../indi.patch
+  git checkout $INDILIB_BRANCH
   cd ..
 fi
 
